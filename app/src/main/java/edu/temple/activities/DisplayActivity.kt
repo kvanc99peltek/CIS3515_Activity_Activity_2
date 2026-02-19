@@ -27,4 +27,12 @@ class DisplayActivity : AppCompatActivity() {
             startActivityForResult(intent, 1)
         }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            val textSize = data.getIntExtra("selectedTextSize", 14)
+            lyricsDisplayTextView.textSize = textSize.toFloat()
+        }
+    }
 }
